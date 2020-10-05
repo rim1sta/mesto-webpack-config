@@ -1,5 +1,12 @@
+import Api from "./Api";
+import Card from "./Card";
+import CardList from "./CardList";
+import FormValidator from "./FormValidator";
+import Popup from "./Popup";
+import UserInfo from "./UserInfo";
+import "../pages/index.css";
+
 (function () {
-  const userPhoto = document.querySelector(".user-info__photo");
   const placesList = document.querySelector(".places-list");
   const popupOpenButton = document.querySelector(".button");
   const popupCloseAddButton = document.querySelector(".popup__close-add");
@@ -22,8 +29,10 @@
     wrongPattern: "Введите данные в верном формате",
   };
 
+  const NODE_ENV = process.env.NODE_ENV === 'production';
+  const API_URL = NODE_ENV === 'production' ? 'https://nomoreparties.co' : 'http://nomoreparties.co';
   const options = {
-    url: "https://praktikum.tk/cohort11",
+    url: `${API_URL}/cohort11`,
     headers: {
       authorization: "c5fbe4a5-cce6-4eaa-a017-c7202eda4b40",
       "Content-Type": "application/json",
